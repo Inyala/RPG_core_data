@@ -22,34 +22,28 @@ Image non contractuel
     </text>
     <image
       src="https://inyala.github.io/RPG_core_data/actu/img/actu2.jpg"
-      width="800"
-      height="800"
+      width="100%"
+      height="auto"
       alt="Image de l'actualité"
     />
 
-    <text>
-Image non contractuel
-    </text>
+    
     <image
       src="https://inyala.github.io/RPG_core_data/actu/img/actu3.jpg"
-      width="800"
-      height="800"
+      width="100%"
+      height="auto"
       alt="Image de l'actualité"
     />
 
-    <text>
-Image non contractuel
-    </text>
+    
     <image
       src="https://inyala.github.io/RPG_core_data/actu/img/actu4.jpg"
-      width="800"
-      height="800"
+      width="100%"
+      height="auto"
       alt="Image de l'actualité"
     />
 
-    <text>
-Image non contractuel
-    </text>
+
   </actu>
 
 </actus>
