@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actus>
+
+  <actu id="Bienvenue">
+
+    <title>Bienvenue sur RPG core</title>
+
+    <text>
+RPG core version🍦glace.1.0
+    </text>
+
+    <image
+      src="https://example.com/image.webp"
+      width="800"
+      height="450"
+      alt="Image de l'actualité"
+    />
+
+    <text>
+Voici la suite du texte.
+    </text>
+
+  </actu>
+
+</actus>
