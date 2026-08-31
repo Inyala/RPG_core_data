@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<actus>
+<actus>m
 
   <actu id="Bienvenue">
 
@@ -11,16 +11,45 @@ RPG core version🍦glace.1.0
     </text>
 
     <image
-      src="https://example.com/image.webp"
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu1.jpg"
       width="800"
-      height="450"
+      height="800"
       alt="Image de l'actualité"
     />
 
     <text>
-Voici la suite du texte.
+Image non contractuel
     </text>
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu2.jpg"
+      width="800"
+      height="800"
+      alt="Image de l'actualité"
+    />
 
+    <text>
+Image non contractuel
+    </text>
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu3.jpg"
+      width="800"
+      height="800"
+      alt="Image de l'actualité"
+    />
+
+    <text>
+Image non contractuel
+    </text>
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu4.jpg"
+      width="800"
+      height="800"
+      alt="Image de l'actualité"
+    />
+
+    <text>
+Image non contractuel
+    </text>
   </actu>
 
 </actus>
