@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Actualité</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  max-width: 1000px;
+  margin: auto;
+}
+
+#message {
+  padding: 20px;
+  text-align: center;
+  color: #aaa;
+}
+
+.actu-image,
+.actu-video {
+  display: block;
+  max-width: 100%;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.text-block {
+  margin: 15px 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.title {
+  margin: 0 0 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+  <div id="message">Chargement de l'actualité...</div>
+</div>
+
+<script>
+(async () => {
+
+  const app = document.getElementById("app");
+  const message = document.getElementById("message");
+
+  function afficherErreur(texte) {
+    app.innerHTML = "";
+    const div = document.createElement("div");
+    div.id = "message";
+    div.textContent = texte;
+    app.appendChild(div);
+  }
+
+  /* Récupération de l'ID depuis ?actu= */
+
+  const params = new URLSearchParams(window.location.search);
+  let actuID = params.get("actu");
+
+  if (!actuID) {
+    afficherErreur("Aucune actualité sélectionnée.");
+    return;
+  }
+
+  /* On enlève éventuellement les guillemets */
+
+  actuID = actuID.replace(/^["']|["']$/g, "");
+
+  try {
+
+    /*
+      Chargement du fichier JSON.
+      Il contient la liste des actualités et leurs ID.
+    */
+
+    const infoResponse = await fetch(
+      "data/actu-info.json"
+    );
+
+    if (!infoResponse.ok) {
+      throw new Error(
+        "Impossible de charger actu-info.json : HTTP " +
+        infoResponse.status
+      );
+    }
+
+    const actuInfo = await infoResponse.json();
+
+    /*
+      Vérification que l'ID demandé existe.
+
+      Le code accepte plusieurs formats simples :
+      ["id1", "id2"]
+
+      ou :
+      [
+        {"id": "id1"},
+        {"id": "id2"}
+      ]
+    */
+
+    let existe = false;
+
+    if (Array.isArray(actuInfo)) {
+      existe = actuInfo.some(item => {
+
+        if (typeof item === "string") {
+          return item === actuID;
+        }
+
+        if (
+          item &&
+          typeof item === "object"
+        ) {
+          return item.id === actuID;
+        }
+
+        return false;
+      });
+    }
+
+    if (!existe) {
+      afficherErreur(
+        "Cette actualité n'existe pas : " +
+        actuID
+      );
+      return;
+    }
+
+    /*
+      Chargement du XML
+    */
+
+    const xmlResponse = await fetch(
+      "data/actu-data.xml"
+    );
+
+    if (!xmlResponse.ok) {
+      throw new Error(
+        "Impossible de charger actu-data.xml : HTTP " +
+        xmlResponse.status
+      );
+    }
+
+    const xmlText = await xmlResponse.text();
+
+    /*
+      Transformation du XML en document.
+
+      Le XML reste des données.
+      Aucun script trouvé dans le XML n'est exécuté.
+    */
+
+    const parser = new DOMParser();
+
+    const xml = parser.parseFromString(
+      xmlText,
+      "application/xml"
+    );
+
+    const parseError = xml.querySelector("parsererror");
+
+    if (parseError) {
+      throw new Error(
+        "Le fichier XML contient une erreur."
+      );
+    }
+
+    /*
+      Recherche de l'actualité.
+
+      Format attendu :
+
+      <actus>
+        <actu id="mon-id">
+          ...
+        </actu>
+      </actus>
+    */
+
+    const actus = xml.querySelectorAll("actu");
+
+    let actu = null;
+
+    for (const item of actus) {
+
+      if (item.getAttribute("id") === actuID) {
+        actu = item;
+        break;
+      }
+
+    }
+
+    if (!actu) {
+      afficherErreur(
+        "ID trouvé dans le JSON, mais absent du XML : " +
+        actuID
+      );
+      return;
+    }
+
+    /*
+      Nettoyage de la page
+    */
+
+    app.innerHTML = "";
+
+    /*
+      TITRE
+
+      <title>Mon actualité</title>
+    */
+
+    const titre = actu.querySelector("title");
+
+    if (titre) {
+
+      document.title = titre.textContent.trim();
+
+      const h1 = document.createElement("h1");
+
+      h1.className = "title";
+      h1.textContent = titre.textContent.trim();
+
+      app.appendChild(h1);
+
+    }
+
+    /*
+      TEXTES
+
+      <text>...</text>
+    */
+
+    actu.querySelectorAll("text").forEach(item => {
+
+      const div = document.createElement("div");
+
+      div.className = "text-block";
+
+      div.textContent =
+        item.textContent.trim();
+
+      app.appendChild(div);
+
+    });
+
+    /*
+      IMAGES
+
+      Exemple :
+
+      <image
+        src="images/image.png"
+        width="500"
+        height="300"
+      />
+    */
+
+    actu.querySelectorAll("image").forEach(item => {
+
+      const src = item.getAttribute("src");
+
+      if (!src) return;
+
+      const img = document.createElement("img");
+
+      img.className = "actu-image";
+      img.src = src;
+
+      const width = item.getAttribute("width");
+      const height = item.getAttribute("height");
+
+      if (width) {
+        img.width = Number(width);
+      }
+
+      if (height) {
+        img.height = Number(height);
+      }
+
+      img.alt =
+        item.getAttribute("alt") || "";
+
+      app.appendChild(img);
+
+    });
+
+    /*
+      VIDEOS
+
+      Exemple :
+
+      <video
+        src="videos/video.mp4"
+        controls="true"
+      />
+    */
+
+    actu.querySelectorAll("video").forEach(item => {
+
+      const src = item.getAttribute("src");
+
+      if (!src) return;
+
+      const video =
+        document.createElement("video");
+
+      video.className = "actu-video";
+
+      video.src = src;
+      video.controls = true;
+
+      const width = item.getAttribute("width");
+      const height = item.getAttribute("height");
+
+      if (width) {
+        video.width = Number(width);
+      }
+
+      if (height) {
+        video.height = Number(height);
+      }
+
+      app.appendChild(video);
+
+    });
+
+    /*
+      LIENS
+
+      <link
+        href="https://..."
+      >
+        Texte du lien
+      </link>
+    */
+
+    actu.querySelectorAll("link").forEach(item => {
+
+      const href =
+        item.getAttribute("href");
+
+      if (!href) return;
+
+      const a = document.createElement("a");
+
+      a.href = href;
+
+      a.textContent =
+        item.textContent.trim() || href;
+
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+
+      a.style.display = "block";
+      a.style.margin = "10px 0";
+
+      app.appendChild(a);
+
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    afficherErreur(
+      "Erreur : " + error.message
+    );
+
+  }
+
+})();
+</script>
+
+</body>
+</html>
