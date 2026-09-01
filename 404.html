@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 - RPG Core</title>
+
+<style>
+:root {
+    --bg: #080b12;
+    --panel: #151d2b;
+    --border: #2c3b52;
+    --text: #edf3ff;
+    --muted: #8fa0ba;
+    --accent: #6ca7ff;
+    --accent2: #9d7cff;
+    --danger: #ff6678;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #17243a 0%, transparent 45%),
+        var(--bg);
+    color: var(--text);
+}
+
+.panel {
+    width: min(600px, 100%);
+    padding: 35px 25px;
+    text-align: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.45);
+}
+
+.code {
+    font-size: clamp(70px, 20vw, 150px);
+    font-weight: bold;
+    line-height: 1;
+    color: var(--danger);
+    text-shadow: 0 0 25px rgba(255,102,120,.35);
+}
+
+h1 {
+    margin: 18px 0 10px;
+    font-size: 24px;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.status {
+    margin: 20px 0;
+    padding: 12px;
+    border-radius: 10px;
+    color: var(--muted);
+    background: #0b1019;
+    border: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: 1px solid var(--border);
+    background: #0b1019;
+    color: var(--text);
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    border-color: var(--accent);
+    background: #202b3d;
+}
+
+.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none;
+}
+
+.small {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 11px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="panel">
+
+```
+<div class="code">404</div>
+
+<h1>ZONE INTROUVABLE</h1>
+
+<p>
+    La ressource demandée n'existe pas,
+    a été déplacée ou est inaccessible.
+</p>
+
+<div class="status" id="status">
+    Initialisation du système audio...
+</div>
+
+<div class="actions">
+    <button class="primary" onclick="location.href='/RPG_core_data/'">
+        Retour à l'accueil
+    </button>
+
+    <button onclick="history.back()">
+        Retour
+    </button>
+
+    <button onclick="playRandomSound()">
+        Jouer un autre son
+    </button>
+</div>
+
+<div class="small">
+    RPG CORE • ERROR SYSTEM
+</div>
+```
+
+</div>
+
+<script>
+const GITHUB_USER = "inyala";
+const GITHUB_REPO = "RPG_core_data";
+const GITHUB_BRANCH = "main";
+
+const AUDIO_PATH =
+    "mnt/data/RPG_core/audio/se";
+
+const status =
+    document.getElementById("status");
+
+let sounds = [];
+let currentAudio = null;
+
+function getApiUrl(path) {
+
+    const cleanPath = path
+        .split("/")
+        .filter(Boolean)
+        .map(encodeURIComponent)
+        .join("/");
+
+    return
+        "https://api.github.com/repos/" +
+        GITHUB_USER +
+        "/" +
+        GITHUB_REPO +
+        "/contents/" +
+        cleanPath +
+        "?ref=" +
+        encodeURIComponent(GITHUB_BRANCH);
+}
+
+function getPagesUrl(path) {
+
+    return
+        "https://" +
+        GITHUB_USER +
+        ".github.io/" +
+        GITHUB_REPO +
+        "/" +
+        path
+            .split("/")
+            .filter(Boolean)
+            .map(encodeURIComponent)
+            .join("/");
+}
+
+async function loadSounds() {
+
+    try {
+
+        status.textContent =
+            "Recherche des sons système...";
+
+        const response =
+            await fetch(getApiUrl(AUDIO_PATH));
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Erreur API " +
+                response.status
+            );
+        }
+
+        const files =
+            await response.json();
+
+        sounds =
+            files
+                .filter(function(file) {
+
+                    return (
+                        file.type === "file" &&
+                        /\.ogg$/i.test(file.name)
+                    );
+                })
+                .map(function(file) {
+
+                    return getPagesUrl(
+                        file.path
+                    );
+                });
+
+        if (!sounds.length) {
+
+            status.textContent =
+                "Aucun fichier OGG trouvé.";
+
+            return;
+        }
+
+        status.textContent =
+            sounds.length +
+            " sons détectés • Son aléatoire prêt";
+
+        playRandomSound();
+
+    } catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "Impossible de charger les sons.";
+    }
+}
+
+function playRandomSound() {
+
+    if (!sounds.length) {
+
+        return;
+    }
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    const randomSound =
+        sounds[
+            Math.floor(
+                Math.random() *
+                sounds.length
+            )
+        ];
+
+    currentAudio =
+        new Audio(randomSound);
+
+    currentAudio.volume = 0.7;
+
+    currentAudio.play()
+        .then(function() {
+
+            status.textContent =
+                "Signal sonore chargé";
+
+        })
+        .catch(function() {
+
+            status.textContent =
+                "Appuie sur « Jouer un autre son »";
+        });
+}
+
+loadSounds();
+</script>
+
+</body>
+	</html>
+						 
