@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>403 — RPG CORE</title>
+
+<style>
+:root{
+    --bg:#080509;
+    --panel:#1a0e17;
+    --line:#4a2737;
+    --text:#fff1f4;
+    --muted:#c29aa7;
+    --red:#ff5368;
+    --red2:#c93552;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at top,#401624 0%,transparent 45%),
+        linear-gradient(180deg,#180a12,var(--bg));
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 3px,
+            rgba(255,255,255,.02) 4px
+        );
+}
+
+.box{
+    width:min(650px,100%);
+    padding:32px 22px 25px;
+    text-align:center;
+    background:rgba(26,14,23,.97);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.7),
+        0 0 50px rgba(255,83,104,.12);
+}
+
+.warning{
+    color:var(--red);
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.code{
+    margin-top:14px;
+    font-size:clamp(90px,24vw,170px);
+    font-weight:900;
+    line-height:.9;
+    letter-spacing:-6px;
+    color:var(--red);
+    text-shadow:
+        0 0 20px rgba(255,83,104,.5),
+        0 0 70px rgba(255,83,104,.2);
+    animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.025)}
+}
+
+h1{
+    margin:22px 0 10px;
+    font-size:24px;
+    letter-spacing:2px;
+}
+
+p{
+    max-width:480px;
+    margin:0 auto 22px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.status{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+    margin-bottom:18px;
+    background:#10070c;
+    border:1px solid #43202e;
+    border-radius:10px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+button{
+    min-height:46px;
+    padding:0 17px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#160a11;
+    color:var(--text);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    border-color:var(--red);
+}
+
+.primary{
+    border:none;
+    background:linear-gradient(
+        135deg,
+        var(--red),
+        var(--red2)
+    );
+}
+
+.footer{
+    margin-top:22px;
+    color:#79505c;
+    font-size:10px;
+    letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="warning">
+SECURITY SYSTEM
+</div>
+
+<div class="code">403</div>
+
+<h1>ACCÈS REFUSÉ</h1>
+
+<p>
+Cette zone est protégée. Votre session ne possède
+pas les autorisations nécessaires.
+</p>
+
+<div class="status" id="status">
+Initialisation du système audio...
+</div>
+
+<div class="buttons">
+
+<button class="primary" onclick="goHome()">
+ACCUEIL
+</button>
+
+<button onclick="history.back()">
+RETOUR
+</button>
+
+<button onclick="playRandomSound()">
+JOUER LE SON
+</button>
+
+</div>
+
+<div class="footer">
+RPG CORE • SECURITY SYSTEM • 403
+</div>
+
+</div>
+
+<script>
+"use strict";
+
+const USER = "inyala";
+const REPO = "RPG_core_data";
+const BRANCH = "main";
+
+const AUDIO_PATH = "mnt/data/RPG_core/audio/se";
+
+const status = document.getElementById("status");
+
+let sounds = [];
+let currentAudio = null;
+
+function getApiUrl(path){
+
+    const encodedPath = path
+        .split("/")
+        .filter(Boolean)
+        .map(encodeURIComponent)
+        .join("/");
+
+    return "https://api.github.com/repos/" +
+        USER + "/" +
+        REPO + "/contents/" +
+        encodedPath +
+        "?ref=" +
+        encodeURIComponent(BRANCH);
+}
+
+function goHome(){
+
+    location.href =
+        "https://inyala.github.io/RPG_core_data/mnt/data/RPG_core/";
+}
+
+async function loadSounds(){
+
+    try{
+
+        status.textContent =
+            "Recherche des fichiers OGG...";
+
+        const response = await fetch(
+            getApiUrl(AUDIO_PATH),
+            {cache:"no-store"}
+        );
+
+        if(!response.ok){
+            throw new Error(
+                "Erreur API : " +
+                response.status
+            );
+        }
+
+        const files = await response.json();
+
+        sounds = files.filter(file =>
+            file.type === "file" &&
+            /\.ogg$/i.test(file.name) &&
+            file.download_url
+        );
+
+        if(!sounds.length){
+
+            status.textContent =
+                "Aucun signal audio trouvé.";
+
+            return;
+        }
+
+        status.textContent =
+            sounds.length +
+            " sons détectés • Appuie sur JOUER LE SON";
+
+    }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+            "Système audio indisponible.";
+    }
+}
+
+function playRandomSound(){
+
+    if(!sounds.length){
+
+        status.textContent =
+            "Les sons ne sont pas encore prêts.";
+
+        return;
+    }
+
+    if(currentAudio){
+
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    const sound =
+        sounds[Math.floor(
+            Math.random() * sounds.length
+        )];
+
+    currentAudio =
+        new Audio(sound.download_url);
+
+    currentAudio.volume = 0.7;
+    currentAudio.preload = "auto";
+
+    currentAudio.play()
+        .then(() => {
+
+            status.textContent =
+                "Signal sonore activé.";
+
+        })
+        .catch(error => {
+
+            console.error(error);
+
+            status.textContent =
+                "Impossible de lire ce fichier. Réessaie.";
+        });
+}
+
+loadSounds();
+</script>
+
+</body>
+</html>
