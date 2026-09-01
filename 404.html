@@ -1,240 +1,279 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>404 - RPG Core</title>
+<title>404 — RPG CORE</title>
 
 <style>
-:root {
-    --bg: #080b12;
-    --panel: #151d2b;
-    --border: #2c3b52;
-    --text: #edf3ff;
-    --muted: #8fa0ba;
-    --accent: #6ca7ff;
-    --accent2: #9d7cff;
-    --danger: #ff6678;
+:root{
+    --bg:#05070d;
+    --panel:#101827;
+    --line:#2a3b59;
+    --text:#edf4ff;
+    --muted:#91a2bd;
+    --blue:#61a7ff;
+    --purple:#9274ff;
+    --red:#ff5368;
 }
 
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    min-height:100%;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
     background:
-        radial-gradient(circle at top, #17243a 0%, transparent 45%),
-        var(--bg);
-    color: var(--text);
+        radial-gradient(circle at top,#17294a 0%,transparent 45%),
+        linear-gradient(180deg,#0b1120,var(--bg));
 }
 
-.panel {
-    width: min(600px, 100%);
-    padding: 35px 25px;
-    text-align: center;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    box-shadow: 0 20px 70px rgba(0,0,0,.45);
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:32px 32px;
 }
 
-.code {
-    font-size: clamp(70px, 20vw, 150px);
-    font-weight: bold;
-    line-height: 1;
-    color: var(--danger);
-    text-shadow: 0 0 25px rgba(255,102,120,.35);
+.box{
+    position:relative;
+    width:min(650px,100%);
+    padding:32px 22px 25px;
+    text-align:center;
+    background:rgba(16,24,39,.97);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:0 25px 90px rgba(0,0,0,.65);
 }
 
-h1 {
-    margin: 18px 0 10px;
-    font-size: 24px;
+.scan{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:1px;
+    background:var(--blue);
+    box-shadow:0 0 15px var(--blue);
+    animation:scan 5s linear infinite;
 }
 
-p {
-    color: var(--muted);
-    line-height: 1.6;
+@keyframes scan{
+    from{top:0}
+    to{top:100%}
 }
 
-.status {
-    margin: 20px 0;
-    padding: 12px;
-    border-radius: 10px;
-    color: var(--muted);
-    background: #0b1019;
-    border: 1px solid var(--border);
-    font-size: 13px;
+.system{
+    color:var(--blue);
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:3px;
 }
 
-.actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+.code{
+    margin-top:14px;
+    font-size:clamp(90px,24vw,170px);
+    font-weight:900;
+    line-height:.9;
+    letter-spacing:-6px;
+    color:var(--red);
+    text-shadow:
+        0 0 20px rgba(255,83,104,.5),
+        0 0 60px rgba(255,83,104,.2);
+    animation:glitch 4s infinite;
 }
 
-button {
-    border: 1px solid var(--border);
-    background: #0b1019;
-    color: var(--text);
-    padding: 12px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
+@keyframes glitch{
+    0%,88%,100%{transform:translate(0)}
+    90%{transform:translate(-3px,1px)}
+    92%{transform:translate(3px,-1px)}
+    94%{transform:translate(-1px,2px)}
 }
 
-button:hover {
-    border-color: var(--accent);
-    background: #202b3d;
+h1{
+    margin:22px 0 10px;
+    font-size:24px;
+    letter-spacing:2px;
 }
 
-.primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
+p{
+    max-width:480px;
+    margin:0 auto 22px;
+    color:var(--muted);
+    line-height:1.6;
 }
 
-.small {
-    margin-top: 20px;
-    color: var(--muted);
-    font-size: 11px;
+.status{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+    margin-bottom:18px;
+    background:#070b14;
+    border:1px solid #1d2b43;
+    border-radius:10px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+button{
+    min-height:46px;
+    padding:0 17px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#0a101d;
+    color:var(--text);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    border-color:var(--blue);
+}
+
+.primary{
+    border:none;
+    background:linear-gradient(135deg,var(--blue),var(--purple));
+}
+
+.footer{
+    margin-top:22px;
+    color:#53627b;
+    font-size:10px;
+    letter-spacing:2px;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="panel">
+<div class="box">
 
-```
+<div class="scan"></div>
+
+<div class="system">RPG CORE SYSTEM</div>
+
 <div class="code">404</div>
 
-<h1>ZONE INTROUVABLE</h1>
+<h1>RESSOURCE INTROUVABLE</h1>
 
 <p>
-    La ressource demandée n'existe pas,
-    a été déplacée ou est inaccessible.
+La ressource demandée n'existe pas, a été déplacée
+ou n'est plus disponible.
 </p>
 
 <div class="status" id="status">
-    Initialisation du système audio...
+Chargement du système audio...
 </div>
 
-<div class="actions">
-    <button class="primary" onclick="location.href='/RPG_core_data/'">
-        Retour à l'accueil
-    </button>
+<div class="buttons">
 
-    <button onclick="history.back()">
-        Retour
-    </button>
+<button class="primary" onclick="goHome()">
+ACCUEIL
+</button>
 
-    <button onclick="playRandomSound()">
-        Jouer un autre son
-    </button>
+<button onclick="history.back()">
+RETOUR
+</button>
+
+<button onclick="playRandomSound()">
+JOUER LE SON
+</button>
+
 </div>
 
-<div class="small">
-    RPG CORE • ERROR SYSTEM
+<div class="footer">
+RPG CORE • ERROR SYSTEM • 404
 </div>
-```
 
 </div>
 
 <script>
-const GITHUB_USER = "inyala";
-const GITHUB_REPO = "RPG_core_data";
-const GITHUB_BRANCH = "main";
+"use strict";
 
-const AUDIO_PATH =
-    "mnt/data/RPG_core/audio/se";
+const USER = "inyala";
+const REPO = "RPG_core_data";
+const BRANCH = "main";
 
-const status =
-    document.getElementById("status");
+const AUDIO_PATH = "mnt/data/RPG_core/audio/se";
+
+const status = document.getElementById("status");
 
 let sounds = [];
 let currentAudio = null;
 
-function getApiUrl(path) {
+function getApiUrl(path){
 
-    const cleanPath = path
+    const encodedPath = path
         .split("/")
         .filter(Boolean)
         .map(encodeURIComponent)
         .join("/");
 
-    return
-        "https://api.github.com/repos/" +
-        GITHUB_USER +
-        "/" +
-        GITHUB_REPO +
-        "/contents/" +
-        cleanPath +
+    return "https://api.github.com/repos/" +
+        USER + "/" +
+        REPO + "/contents/" +
+        encodedPath +
         "?ref=" +
-        encodeURIComponent(GITHUB_BRANCH);
+        encodeURIComponent(BRANCH);
 }
 
-function getPagesUrl(path) {
+function goHome(){
 
-    return
-        "https://" +
-        GITHUB_USER +
-        ".github.io/" +
-        GITHUB_REPO +
-        "/" +
-        path
-            .split("/")
-            .filter(Boolean)
-            .map(encodeURIComponent)
-            .join("/");
+    location.href =
+        "https://inyala.github.io/RPG_core_data/mnt/data/RPG_core/";
 }
 
-async function loadSounds() {
+async function loadSounds(){
 
-    try {
+    try{
 
         status.textContent =
-            "Recherche des sons système...";
+            "Recherche des fichiers audio...";
 
-        const response =
-            await fetch(getApiUrl(AUDIO_PATH));
+        const response = await fetch(
+            getApiUrl(AUDIO_PATH),
+            {cache:"no-store"}
+        );
 
-        if (!response.ok) {
-
+        if(!response.ok){
             throw new Error(
-                "Erreur API " +
+                "Erreur GitHub API : " +
                 response.status
             );
         }
 
-        const files =
-            await response.json();
+        const files = await response.json();
 
-        sounds =
-            files
-                .filter(function(file) {
+        sounds = files.filter(file =>
+            file.type === "file" &&
+            /\.ogg$/i.test(file.name) &&
+            file.download_url
+        );
 
-                    return (
-                        file.type === "file" &&
-                        /\.ogg$/i.test(file.name)
-                    );
-                })
-                .map(function(file) {
-
-                    return getPagesUrl(
-                        file.path
-                    );
-                });
-
-        if (!sounds.length) {
+        if(!sounds.length){
 
             status.textContent =
                 "Aucun fichier OGG trouvé.";
@@ -244,11 +283,9 @@ async function loadSounds() {
 
         status.textContent =
             sounds.length +
-            " sons détectés • Son aléatoire prêt";
+            " sons détectés • Appuie sur JOUER LE SON";
 
-        playRandomSound();
-
-    } catch (error) {
+    }catch(error){
 
         console.error(error);
 
@@ -257,43 +294,46 @@ async function loadSounds() {
     }
 }
 
-function playRandomSound() {
+function playRandomSound(){
 
-    if (!sounds.length) {
+    if(!sounds.length){
+
+        status.textContent =
+            "Les sons ne sont pas encore chargés.";
 
         return;
     }
 
-    if (currentAudio) {
+    if(currentAudio){
 
         currentAudio.pause();
         currentAudio.currentTime = 0;
     }
 
-    const randomSound =
-        sounds[
-            Math.floor(
-                Math.random() *
-                sounds.length
-            )
-        ];
+    const sound =
+        sounds[Math.floor(
+            Math.random() * sounds.length
+        )];
 
     currentAudio =
-        new Audio(randomSound);
+        new Audio(sound.download_url);
 
     currentAudio.volume = 0.7;
+    currentAudio.preload = "auto";
 
     currentAudio.play()
-        .then(function() {
+        .then(() => {
 
             status.textContent =
-                "Signal sonore chargé";
+                "Signal audio activé.";
 
         })
-        .catch(function() {
+        .catch(error => {
+
+            console.error(error);
 
             status.textContent =
-                "Appuie sur « Jouer un autre son »";
+                "Lecture impossible. Réessaie.";
         });
 }
 
@@ -301,5 +341,4 @@ loadSounds();
 </script>
 
 </body>
-	</html>
-						 
+</html>
