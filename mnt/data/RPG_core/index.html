@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>RPG Core - Explorateur</title>
 
 <style>
 
 :root {
+
     --bg: #080b12;
     --bg2: #101622;
     --panel: #151d2b;
@@ -16,8 +22,10 @@
     --border: #2c3b52;
     --text: #edf3ff;
     --muted: #8fa0ba;
+
     --accent: #6ca7ff;
     --accent2: #9d7cff;
+
     --danger: #ff6678;
     --success: #5ee6a8;
 
@@ -27,16 +35,21 @@
     --radius: 14px;
 }
 
+
 * {
     box-sizing: border-box;
 }
+
 
 html {
     min-height: 100%;
 }
 
+
 body {
+
     margin: 0;
+
     min-height: 100vh;
 
     font-family:
@@ -44,7 +57,8 @@ body {
         Helvetica,
         sans-serif;
 
-    color: var(--text);
+    color:
+        var(--text);
 
     background:
         radial-gradient(
@@ -61,12 +75,18 @@ body {
 ========================================================= */
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        50;
 
     background:
-        rgba(8, 11, 18, .94);
+        rgba(8,11,18,.94);
 
     backdrop-filter:
         blur(14px);
@@ -75,28 +95,52 @@ header {
         1px solid var(--border);
 }
 
+
 .header-inner {
-    max-width: 1200px;
-    margin: auto;
-    padding: 16px;
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        16px;
 }
+
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
 }
 
+
 .logo-icon {
-    width: 44px;
-    height: 44px;
 
-    flex: 0 0 44px;
+    width:
+        44px;
 
-    display: grid;
-    place-items: center;
+    height:
+        44px;
 
-    font-size: 23px;
+    flex:
+        0 0 44px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    font-size:
+        23px;
 
     background:
         linear-gradient(
@@ -105,22 +149,35 @@ header {
             var(--accent2)
         );
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     box-shadow:
         0 0 25px
         rgba(108,167,255,.25);
 }
 
+
 h1 {
-    margin: 0;
-    font-size: 20px;
+
+    margin:
+        0;
+
+    font-size:
+        20px;
 }
 
+
 .subtitle {
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 13px;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
 }
 
 
@@ -129,21 +186,30 @@ h1 {
 ========================================================= */
 
 .controls {
-    max-width: 1200px;
-    margin: auto;
-    padding: 14px 16px 0;
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        14px 16px 0;
 }
+
 
 .search-box {
     width: 100%;
 }
 
+
 .search-box input {
-    width: 100%;
+
+    width:
+        100%;
 
     padding:
-        13px
-        15px;
+        13px 15px;
 
     border:
         1px solid var(--border);
@@ -157,12 +223,16 @@ h1 {
     color:
         var(--text);
 
-    outline: none;
+    outline:
+        none;
 
-    font-size: 15px;
+    font-size:
+        15px;
 }
 
+
 .search-box input:focus {
+
     border-color:
         var(--accent);
 
@@ -171,7 +241,9 @@ h1 {
         rgba(108,167,255,.12);
 }
 
+
 .search-box input::placeholder {
+
     color:
         var(--muted);
 }
@@ -182,9 +254,15 @@ h1 {
 ========================================================= */
 
 main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 14px 16px 40px;
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        14px 16px 40px;
 }
 
 
@@ -193,15 +271,23 @@ main {
 ========================================================= */
 
 .toolbar {
-    display: flex;
-    flex-wrap: wrap;
 
-    gap: 8px;
+    display:
+        flex;
 
-    margin-bottom: 12px;
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        12px;
 }
 
+
 button {
+
     border:
         1px solid var(--border);
 
@@ -212,8 +298,7 @@ button {
         var(--text);
 
     padding:
-        10px
-        13px;
+        10px 13px;
 
     border-radius:
         10px;
@@ -228,7 +313,9 @@ button {
         .15s ease;
 }
 
+
 button:hover {
+
     background:
         var(--panel-hover);
 
@@ -236,7 +323,9 @@ button:hover {
         var(--accent);
 }
 
+
 button:active {
+
     transform:
         scale(.97);
 }
@@ -247,10 +336,15 @@ button:active {
 ========================================================= */
 
 #breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
 
-    gap: 5px;
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        5px;
 
     margin-bottom:
         12px;
@@ -262,10 +356,11 @@ button:active {
         13px;
 }
 
+
 .breadcrumb-button {
+
     padding:
-        5px
-        8px;
+        5px 8px;
 
     font-size:
         12px;
@@ -277,6 +372,7 @@ button:active {
 ========================================================= */
 
 #status {
+
     margin-bottom:
         12px;
 
@@ -302,6 +398,7 @@ button:active {
 ========================================================= */
 
 .file-list {
+
     display:
         flex;
 
@@ -314,10 +411,11 @@ button:active {
 
 
 /* =========================================================
-   CARTE FICHIER
+   FICHIER
 ========================================================= */
 
 .file {
+
     display:
         flex;
 
@@ -352,7 +450,9 @@ button:active {
         hidden;
 }
 
+
 .file:hover {
+
     background:
         var(--panel-hover);
 
@@ -362,12 +462,12 @@ button:active {
 
 
 /* =========================================================
-   ICÔNE / APERÇU
-   TOUJOURS CARRÉ
+   APERÇU
 ========================================================= */
 
 .file-icon,
 .image-preview {
+
     width:
         var(--preview-size);
 
@@ -391,9 +491,8 @@ button:active {
 }
 
 
-/* Emoji */
-
 .file-icon {
+
     display:
         grid;
 
@@ -412,9 +511,8 @@ button:active {
 }
 
 
-/* Image */
-
 .image-preview {
+
     display:
         block;
 
@@ -431,32 +529,13 @@ button:active {
         #0a0f18;
 }
 
-.image-preview.failed {
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    padding:
-        8px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        11px;
-
-    text-align:
-        center;
-}
-
 
 /* =========================================================
    INFORMATIONS
 ========================================================= */
 
 .file-info {
+
     min-width:
         0;
 
@@ -464,7 +543,9 @@ button:active {
         1;
 }
 
+
 .file-name {
+
     font-size:
         14px;
 
@@ -481,7 +562,9 @@ button:active {
         nowrap;
 }
 
+
 .file-meta {
+
     margin-top:
         5px;
 
@@ -492,7 +575,9 @@ button:active {
         12px;
 }
 
+
 .file-path {
+
     margin-top:
         4px;
 
@@ -518,6 +603,7 @@ button:active {
 ========================================================= */
 
 .file-actions {
+
     display:
         flex;
 
@@ -528,7 +614,9 @@ button:active {
         0;
 }
 
+
 .icon-button {
+
     width:
         38px;
 
@@ -546,36 +634,33 @@ button:active {
 }
 
 
-/*
-   IMPORTANT :
-   les dossiers n'ont aucune action.
-*/
-
 .file.directory .file-actions {
-    display:
-        none;
+    display: none;
 }
 
 
 /* =========================================================
-   MODE GRILLE
+   GRILLE
 ========================================================= */
 
 .file-list.grid-view {
+
     display:
         grid;
 
     grid-template-columns:
         repeat(
             var(--grid-columns),
-            minmax(0, 1fr)
+            minmax(0,1fr)
         );
 
     gap:
         10px;
 }
 
+
 .grid-view .file {
+
     flex-direction:
         column;
 
@@ -590,13 +675,9 @@ button:active {
 }
 
 
-/*
-   L'image ET l'emoji occupent exactement
-   la même zone carrée.
-*/
-
 .grid-view .image-preview,
 .grid-view .file-icon {
+
     width:
         100%;
 
@@ -610,35 +691,30 @@ button:active {
         0;
 }
 
+
 .grid-view .file-info {
+
     width:
         100%;
 }
 
-.grid-view .file-name {
-    margin-top:
-        3px;
-}
 
 .grid-view .file-actions {
+
     width:
         100%;
 }
 
+
 .grid-view .icon-button {
+
     flex:
         1;
 }
 
 
-/*
-   Pour les dossiers :
-   aucune barre de boutons.
-*/
-
 .grid-view .directory .file-actions {
-    display:
-        none;
+    display: none;
 }
 
 
@@ -647,16 +723,21 @@ button:active {
 ========================================================= */
 
 .global-search-result {
+
     border-left:
         3px solid var(--accent);
 }
 
+
 .global-search-result .file-path {
+
     color:
         var(--accent);
 }
 
+
 .search-badge {
+
     display:
         inline-block;
 
@@ -686,6 +767,7 @@ button:active {
 
 .empty,
 .error {
+
     padding:
         30px;
 
@@ -705,17 +787,18 @@ button:active {
         var(--muted);
 }
 
+
 .error {
-    color:
-        var(--danger);
+    color: var(--danger);
 }
 
 
 /* =========================================================
-   MODALE PARAMÈTRES
+   SETTINGS
 ========================================================= */
 
 .settings-panel {
+
     position:
         fixed;
 
@@ -744,17 +827,16 @@ button:active {
         blur(8px);
 }
 
+
 .settings-panel.open {
-    display:
-        flex;
+    display: flex;
 }
 
+
 .settings-card {
+
     width:
-        min(
-            500px,
-            100%
-        );
+        min(500px,100%);
 
     max-height:
         90vh;
@@ -779,7 +861,9 @@ button:active {
         rgba(0,0,0,.55);
 }
 
+
 .settings-card h2 {
+
     margin-top:
         0;
 
@@ -790,12 +874,16 @@ button:active {
         19px;
 }
 
+
 .setting {
+
     margin-bottom:
         18px;
 }
 
+
 .setting label {
+
     display:
         block;
 
@@ -809,13 +897,17 @@ button:active {
         bold;
 }
 
+
 .setting select,
 .setting input[type="range"] {
+
     width:
         100%;
 }
 
+
 .setting select {
+
     padding:
         11px;
 
@@ -832,7 +924,9 @@ button:active {
         var(--text);
 }
 
+
 .range-value {
+
     margin-top:
         6px;
 
@@ -843,7 +937,9 @@ button:active {
         13px;
 }
 
+
 .setting-note {
+
     margin-top:
         7px;
 
@@ -857,7 +953,9 @@ button:active {
         1.5;
 }
 
+
 .settings-actions {
+
     display:
         flex;
 
@@ -868,17 +966,18 @@ button:active {
         22px;
 }
 
+
 .settings-actions button {
-    flex:
-        1;
+    flex: 1;
 }
 
 
 /* =========================================================
-   VISIONNEUSE MÉDIA INTERNE
+   VISIONNEUSE
 ========================================================= */
 
 .media-viewer {
+
     position:
         fixed;
 
@@ -901,15 +1000,14 @@ button:active {
         blur(12px);
 }
 
+
 .media-viewer.open {
-    display:
-        flex;
+    display: flex;
 }
 
 
-/* Barre supérieure */
-
 .viewer-topbar {
+
     display:
         flex;
 
@@ -932,7 +1030,9 @@ button:active {
         rgba(8,11,18,.92);
 }
 
+
 .viewer-title {
+
     flex:
         1;
 
@@ -955,7 +1055,9 @@ button:active {
         nowrap;
 }
 
+
 .viewer-button {
+
     width:
         42px;
 
@@ -976,9 +1078,8 @@ button:active {
 }
 
 
-/* Zone média */
-
 .viewer-content {
+
     flex:
         1;
 
@@ -1001,7 +1102,9 @@ button:active {
         auto;
 }
 
+
 .viewer-content img {
+
     max-width:
         100%;
 
@@ -1018,7 +1121,9 @@ button:active {
         crisp-edges;
 }
 
+
 .viewer-content video {
+
     max-width:
         100%;
 
@@ -1032,12 +1137,11 @@ button:active {
         auto;
 }
 
+
 .viewer-content audio {
+
     width:
-        min(
-            700px,
-            100%
-        );
+        min(700px,100%);
 }
 
 
@@ -1046,6 +1150,7 @@ button:active {
 ========================================================= */
 
 footer {
+
     padding:
         25px;
 
@@ -1067,112 +1172,81 @@ footer {
    RESPONSIVE
 ========================================================= */
 
-/*
-   IMPORTANT :
-   Le mobile n'impose PLUS 2 colonnes.
-   Il utilise --grid-columns comme le PC.
-*/
-
-@media (max-width: 900px) {
-
-    .file-list.grid-view {
-        grid-template-columns:
-            repeat(
-                var(--grid-columns),
-                minmax(0, 1fr)
-            );
-    }
-
-}
-
-
-/*
-   On réduit seulement la taille disponible,
-   pas le nombre de colonnes.
-*/
-
-@media (max-width: 600px) {
+@media (max-width:600px) {
 
     main {
+
         padding:
             10px
             10px
             30px;
     }
 
+
     .controls {
+
         padding:
             10px
             10px
             0;
     }
 
+
     .toolbar {
+
         display:
             grid;
 
         grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
+            repeat(2,1fr);
     }
+
 
     .toolbar button {
-        width:
-            100%;
+        width: 100%;
     }
+
 
     .file {
-        min-height:
-            70px;
+        min-height: 70px;
     }
+
 
     .settings-card {
-        padding:
-            16px;
+        padding: 16px;
     }
+
 
     .viewer-content {
-        padding:
-            10px;
+        padding: 10px;
     }
 
 }
 
 
-/*
-   Petit téléphone :
-   les cartes restent carrées.
-*/
-
-@media (max-width: 380px) {
+@media (max-width:380px) {
 
     :root {
-        --preview-size:
-            72px;
+        --preview-size:72px;
     }
+
 
     .file-name {
-        font-size:
-            13px;
+        font-size:13px;
     }
 
+
     .viewer-topbar {
-        padding:
-            8px;
+        padding:8px;
     }
 
 }
 
-
-/* =========================================================
-   ACCESSIBILITÉ
-========================================================= */
 
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
+
     outline:
         2px solid var(--accent);
 
@@ -1181,15 +1255,12 @@ select:focus-visible {
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
 
 <header>
 
@@ -1220,10 +1291,6 @@ select:focus-visible {
 </header>
 
 
-<!-- =======================================================
-     RECHERCHE
-======================================================= -->
-
 <div class="controls">
 
     <div class="search-box">
@@ -1240,12 +1307,7 @@ select:focus-visible {
 </div>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
-
 <main>
-
 
     <div class="toolbar">
 
@@ -1280,7 +1342,6 @@ select:focus-visible {
         id="fileList"
         class="file-list"
     ></div>
-
 
 </main>
 
@@ -1351,9 +1412,12 @@ select:focus-visible {
             </div>
 
             <div class="setting-note">
+
                 En grille, la taille est automatiquement
                 adaptée à la largeur de la carte.
-                Les images et les emojis restent toujours carrés.
+
+                Les images et emojis restent toujours carrés.
+
             </div>
 
         </div>
@@ -1382,8 +1446,10 @@ select:focus-visible {
             </div>
 
             <div class="setting-note">
+
                 Le même nombre de colonnes est utilisé
                 sur PC, tablette et téléphone.
+
             </div>
 
         </div>
@@ -1407,7 +1473,7 @@ select:focus-visible {
 
 
 <!-- =======================================================
-     VISIONNEUSE INTERNE
+     VISIONNEUSE
 ======================================================= -->
 
 <div
@@ -1455,7 +1521,7 @@ select:focus-visible {
 <script>
 
 /* =========================================================
-   CONFIGURATION GITHUB
+   CONFIGURATION
 ========================================================= */
 
 const GITHUB_USER =
@@ -1474,14 +1540,56 @@ const ROOT_PATH =
     START_PATH;
 
 
+/* =========================================================
+   CACHE
+========================================================= */
+
 /*
-   Fichier à cacher.
-   Le chemin est comparé exactement.
+   Durée du cache :
+
+   30 minutes.
+
+   Cela signifie que si tu navigues plusieurs fois
+   dans les mêmes dossiers, GitHub ne sera pas rappelé
+   à chaque fois.
 */
 
-const HIDDEN_FILES = new Set([
-    "mnt/data/RPG_core/index.html"
-]);
+const CACHE_DURATION =
+    30 * 60 * 1000;
+
+
+/*
+   Cache des dossiers.
+*/
+
+const DIRECTORY_CACHE_KEY =
+    "rpgCore_directoryCache_v4";
+
+
+/*
+   Cache de l'arbre global.
+*/
+
+const TREE_CACHE_KEY =
+    "rpgCore_treeCache_v4";
+
+
+/*
+   Paramètres affichage.
+*/
+
+const DISPLAY_STORAGE_KEY =
+    "rpgCore_displaySettings_v4";
+
+
+/* =========================================================
+   FICHIERS CACHÉS
+========================================================= */
+
+const HIDDEN_FILES =
+    new Set([
+        "mnt/data/RPG_core/index.html"
+    ]);
 
 
 /* =========================================================
@@ -1499,6 +1607,12 @@ let allFiles =
 
 let globalSearchMode =
     false;
+
+let globalSearchTimer =
+    null;
+
+let currentViewerUrl =
+    "";
 
 
 /* =========================================================
@@ -1545,18 +1659,280 @@ const viewerOpenBrowser =
         "viewerOpenBrowser"
     );
 
-
-let currentViewerUrl =
-    "";
+const settingsPanel =
+    document.getElementById(
+        "settingsPanel"
+    );
 
 
 /* =========================================================
-   PARAMÈTRES
+   CACHE LOCAL
 ========================================================= */
 
-const DISPLAY_STORAGE_KEY =
-    "rpgCore_displaySettings_v3";
+function readStorage(
+    key,
+    fallback
+) {
 
+    try {
+
+        const value =
+            localStorage.getItem(
+                key
+            );
+
+        if (!value) {
+            return fallback;
+        }
+
+        return JSON.parse(
+            value
+        );
+
+    }
+
+    catch {
+
+        return fallback;
+
+    }
+
+}
+
+
+function writeStorage(
+    key,
+    value
+) {
+
+    try {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(
+                value
+            )
+        );
+
+        return true;
+
+    }
+
+    catch {
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   CACHE DOSSIERS
+========================================================= */
+
+function getDirectoryCache() {
+
+    return readStorage(
+        DIRECTORY_CACHE_KEY,
+        {}
+    );
+
+}
+
+
+function saveDirectoryCache(
+    cache
+) {
+
+    writeStorage(
+        DIRECTORY_CACHE_KEY,
+        cache
+    );
+
+}
+
+
+function getCachedDirectory(
+    path
+) {
+
+    const cache =
+        getDirectoryCache();
+
+    const entry =
+        cache[path];
+
+
+    if (!entry) {
+        return null;
+    }
+
+
+    const age =
+        Date.now() -
+        Number(
+            entry.timestamp || 0
+        );
+
+
+    if (
+        age >
+        CACHE_DURATION
+    ) {
+
+        delete cache[path];
+
+        saveDirectoryCache(
+            cache
+        );
+
+        return null;
+
+    }
+
+
+    if (
+        !Array.isArray(
+            entry.files
+        )
+    ) {
+
+        return null;
+
+    }
+
+
+    return entry.files;
+
+}
+
+
+function setCachedDirectory(
+    path,
+    files
+) {
+
+    const cache =
+        getDirectoryCache();
+
+
+    cache[path] = {
+
+        timestamp:
+            Date.now(),
+
+        files:
+            files
+
+    };
+
+
+    saveDirectoryCache(
+        cache
+    );
+
+}
+
+
+/* =========================================================
+   CACHE ARBRE GLOBAL
+========================================================= */
+
+function getCachedTree() {
+
+    const data =
+        readStorage(
+            TREE_CACHE_KEY,
+            null
+        );
+
+
+    if (!data) {
+        return null;
+    }
+
+
+    const age =
+        Date.now() -
+        Number(
+            data.timestamp || 0
+        );
+
+
+    if (
+        age >
+        CACHE_DURATION
+    ) {
+
+        localStorage.removeItem(
+            TREE_CACHE_KEY
+        );
+
+        return null;
+
+    }
+
+
+    if (
+        !Array.isArray(
+            data.files
+        )
+    ) {
+
+        return null;
+
+    }
+
+
+    return data.files;
+
+}
+
+
+function setCachedTree(
+    files
+) {
+
+    writeStorage(
+
+        TREE_CACHE_KEY,
+
+        {
+
+            timestamp:
+                Date.now(),
+
+            files:
+                files
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   NETTOYAGE CACHE
+========================================================= */
+
+function clearExplorerCache() {
+
+    localStorage.removeItem(
+        DIRECTORY_CACHE_KEY
+    );
+
+    localStorage.removeItem(
+        TREE_CACHE_KEY
+    );
+
+}
+
+
+/* =========================================================
+   PARAMÈTRES AFFICHAGE
+========================================================= */
 
 const DEFAULT_DISPLAY_SETTINGS = {
 
@@ -1574,30 +1950,20 @@ const DEFAULT_DISPLAY_SETTINGS = {
 
 function getDisplaySettings() {
 
-    try {
+    const saved =
+        readStorage(
+            DISPLAY_STORAGE_KEY,
+            {}
+        );
 
-        const saved =
-            JSON.parse(
-                localStorage.getItem(
-                    DISPLAY_STORAGE_KEY
-                )
-            );
 
-        return {
+    return {
 
-            ...DEFAULT_DISPLAY_SETTINGS,
+        ...DEFAULT_DISPLAY_SETTINGS,
 
-            ...(saved || {})
+        ...(saved || {})
 
-        };
-
-    } catch {
-
-        return {
-            ...DEFAULT_DISPLAY_SETTINGS
-        };
-
-    }
+    };
 
 }
 
@@ -1606,14 +1972,9 @@ function saveDisplaySettings(
     settings
 ) {
 
-    localStorage.setItem(
-
+    writeStorage(
         DISPLAY_STORAGE_KEY,
-
-        JSON.stringify(
-            settings
-        )
-
+        settings
     );
 
 }
@@ -1628,14 +1989,18 @@ function applyDisplaySettings() {
     document.documentElement.style
         .setProperty(
             "--preview-size",
-            settings.imageSize + "px"
+            Number(
+                settings.imageSize
+            ) + "px"
         );
 
 
     document.documentElement.style
         .setProperty(
             "--grid-columns",
-            settings.gridColumns
+            Number(
+                settings.gridColumns
+            )
         );
 
 
@@ -1712,7 +2077,9 @@ function applyDisplaySettings() {
         columnsValue.textContent =
             settings.gridColumns +
             (
-                settings.gridColumns > 1
+                Number(
+                    settings.gridColumns
+                ) > 1
                     ? " colonnes"
                     : " colonne"
             );
@@ -1741,7 +2108,11 @@ function getApiUrl(
 
 
     let url =
-        `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`;
+        "https://api.github.com/repos/" +
+        GITHUB_USER +
+        "/" +
+        GITHUB_REPO +
+        "/contents";
 
 
     if (encodedPath) {
@@ -1754,9 +2125,10 @@ function getApiUrl(
 
 
     url +=
-        `?ref=${encodeURIComponent(
+        "?ref=" +
+        encodeURIComponent(
             GITHUB_BRANCH
-        )}`;
+        );
 
 
     return url;
@@ -1765,7 +2137,7 @@ function getApiUrl(
 
 
 /* =========================================================
-   URL GITHUB PAGES
+   GITHUB PAGES
 ========================================================= */
 
 function getPagesUrl(
@@ -1783,7 +2155,11 @@ function getPagesUrl(
 
 
     let url =
-        `https://${GITHUB_USER}.github.io/${GITHUB_REPO}/`;
+        "https://" +
+        GITHUB_USER +
+        ".github.io/" +
+        GITHUB_REPO +
+        "/";
 
 
     if (cleanPath) {
@@ -1800,43 +2176,16 @@ function getPagesUrl(
 
 
 /* =========================================================
-   URL GITHUB RAW
-========================================================= */
-
-function getRawUrl(
-    path
-) {
-
-    const encodedPath =
-        path
-            .split("/")
-            .filter(Boolean)
-            .map(
-                encodeURIComponent
-            )
-            .join("/");
-
-
-    return (
-        `https://raw.githubusercontent.com/` +
-        `${GITHUB_USER}/` +
-        `${GITHUB_REPO}/` +
-        `${encodeURIComponent(GITHUB_BRANCH)}/` +
-        encodedPath
-    );
-
-}
-
-
-/* =========================================================
-   SÉCURITÉ CHEMINS
+   PATH
 ========================================================= */
 
 function normalizePath(
     path
 ) {
 
-    return path
+    return String(
+        path || ""
+    )
         .split("/")
         .filter(Boolean)
         .join("/");
@@ -1890,36 +2239,6 @@ function safePath(
 }
 
 
-/* =========================================================
-   FICHIERS CACHÉS
-========================================================= */
-
-function isHiddenFile(
-    file
-) {
-
-    if (!file) {
-        return true;
-    }
-
-
-    const clean =
-        normalizePath(
-            file.path || ""
-        );
-
-
-    return HIDDEN_FILES.has(
-        clean
-    );
-
-}
-
-
-/* =========================================================
-   PARENT
-========================================================= */
-
 function getParentPath(
     path
 ) {
@@ -1939,6 +2258,28 @@ function getParentPath(
 
 
 /* =========================================================
+   FICHIERS CACHÉS
+========================================================= */
+
+function isHiddenFile(
+    file
+) {
+
+    if (!file) {
+        return true;
+    }
+
+
+    return HIDDEN_FILES.has(
+        normalizePath(
+            file.path || ""
+        )
+    );
+
+}
+
+
+/* =========================================================
    TAILLE
 ========================================================= */
 
@@ -1948,7 +2289,8 @@ function formatSize(
 
     if (
         bytes === undefined ||
-        bytes === null
+        bytes === null ||
+        bytes === ""
     ) {
 
         return "";
@@ -2010,7 +2352,8 @@ function getExtension(
     const name =
         String(
             file?.name || ""
-        ).toLowerCase();
+        )
+        .toLowerCase();
 
 
     const dot =
@@ -2026,14 +2369,15 @@ function getExtension(
     }
 
 
-    return name
-        .substring(dot + 1);
+    return name.substring(
+        dot + 1
+    );
 
 }
 
 
 /* =========================================================
-   IMAGE
+   TYPES
 ========================================================= */
 
 function isImageFile(
@@ -2050,13 +2394,8 @@ function isImageFile(
     }
 
 
-    const ext =
-        getExtension(
-            file
-        );
-
-
     return [
+
         "png",
         "jpg",
         "jpeg",
@@ -2066,16 +2405,13 @@ function isImageFile(
         "svg",
         "avif",
         "ico"
+
     ].includes(
-        ext
+        getExtension(file)
     );
 
 }
 
-
-/* =========================================================
-   AUDIO
-========================================================= */
 
 function isAudioFile(
     file
@@ -2091,13 +2427,8 @@ function isAudioFile(
     }
 
 
-    const ext =
-        getExtension(
-            file
-        );
-
-
     return [
+
         "mp3",
         "ogg",
         "wav",
@@ -2105,16 +2436,13 @@ function isAudioFile(
         "aac",
         "flac",
         "opus"
+
     ].includes(
-        ext
+        getExtension(file)
     );
 
 }
 
-
-/* =========================================================
-   VIDEO
-========================================================= */
 
 function isVideoFile(
     file
@@ -2130,28 +2458,20 @@ function isVideoFile(
     }
 
 
-    const ext =
-        getExtension(
-            file
-        );
-
-
     return [
+
         "mp4",
         "webm",
         "ogv",
         "mov",
         "m4v"
+
     ].includes(
-        ext
+        getExtension(file)
     );
 
 }
 
-
-/* =========================================================
-   MÉDIA
-========================================================= */
 
 function isMediaFile(
     file
@@ -2298,7 +2618,7 @@ function getFileIcon(
 
 
 /* =========================================================
-   APERÇU IMAGE
+   IMAGE PREVIEW
 ========================================================= */
 
 function createImagePreview(
@@ -2372,7 +2692,7 @@ function createImagePreview(
 
 
 /* =========================================================
-   TYPE MÉDIA
+   MEDIA
 ========================================================= */
 
 function getMediaType(
@@ -2412,7 +2732,7 @@ function getMediaType(
 
 
 /* =========================================================
-   OUVERTURE VISIONNEUSE
+   VISIONNEUSE
 ========================================================= */
 
 function openMediaViewer(
@@ -2426,9 +2746,7 @@ function openMediaViewer(
 
 
     if (!type) {
-
         return;
-
     }
 
 
@@ -2459,11 +2777,14 @@ function openMediaViewer(
                 "img"
             );
 
+
         img.src =
             url;
 
+
         img.alt =
             file.name;
+
 
         viewerContent.appendChild(
             img
@@ -2481,14 +2802,18 @@ function openMediaViewer(
                 "audio"
             );
 
+
         audio.controls =
             true;
+
 
         audio.autoplay =
             true;
 
+
         audio.src =
             url;
+
 
         viewerContent.appendChild(
             audio
@@ -2506,17 +2831,22 @@ function openMediaViewer(
                 "video"
             );
 
+
         video.controls =
             true;
+
 
         video.autoplay =
             true;
 
+
         video.playsInline =
             true;
 
+
         video.src =
             url;
+
 
         viewerContent.appendChild(
             video
@@ -2541,10 +2871,6 @@ function openMediaViewer(
 
 }
 
-
-/* =========================================================
-   FERMER VISIONNEUSE
-========================================================= */
 
 function closeMediaViewer() {
 
@@ -2574,12 +2900,11 @@ function closeMediaViewer() {
 
 
 /* =========================================================
-   RENDU DES FICHIERS
+   RENDU
 ========================================================= */
 
 function renderFiles(
-    files = currentFiles,
-    options = {}
+    files = currentFiles
 ) {
 
     fileList.innerHTML =
@@ -2598,12 +2923,6 @@ function renderFiles(
             : [];
 
 
-    /*
-       La recherche locale dans le dossier
-       et la recherche globale utilisent
-       le nom + le chemin.
-    */
-
     if (search) {
 
         filtered =
@@ -2613,12 +2932,16 @@ function renderFiles(
                     const name =
                         String(
                             file.name || ""
-                        ).toLowerCase();
+                        )
+                        .toLowerCase();
+
 
                     const path =
                         String(
                             file.path || ""
-                        ).toLowerCase();
+                        )
+                        .toLowerCase();
+
 
                     return (
                         name.includes(search) ||
@@ -2630,10 +2953,6 @@ function renderFiles(
 
     }
 
-
-    /*
-       Toujours cacher index.html.
-    */
 
     filtered =
         filtered.filter(
@@ -2707,10 +3026,6 @@ function renderFiles(
             }
 
 
-            /*
-               APERÇU
-            */
-
             const preview =
                 createImagePreview(
                     file
@@ -2750,10 +3065,6 @@ function renderFiles(
             }
 
 
-            /*
-               INFOS
-            */
-
             const info =
                 document.createElement(
                     "div"
@@ -2791,13 +3102,16 @@ function renderFiles(
                         "span"
                     );
 
+
                 badge.className =
                     "search-badge";
+
 
                 badge.textContent =
                     file.type === "dir"
                         ? "DOSSIER"
                         : "FICHIER";
+
 
                 name.appendChild(
                     badge
@@ -2816,23 +3130,12 @@ function renderFiles(
                 "file-meta";
 
 
-            if (
+            meta.textContent =
                 file.type === "dir"
-            ) {
-
-                meta.textContent =
-                    "Dossier";
-
-            }
-
-            else {
-
-                meta.textContent =
-                    formatSize(
+                    ? "Dossier"
+                    : formatSize(
                         file.size
                     );
-
-            }
 
 
             info.appendChild(
@@ -2844,11 +3147,6 @@ function renderFiles(
                 meta
             );
 
-
-            /*
-               Chemin visible seulement
-               pour la recherche globale.
-            */
 
             if (
                 globalSearchMode
@@ -2879,11 +3177,6 @@ function renderFiles(
             }
 
 
-            /*
-               ACTIONS
-               Uniquement pour les fichiers.
-            */
-
             const actions =
                 document.createElement(
                     "div"
@@ -2897,10 +3190,6 @@ function renderFiles(
             if (
                 file.type !== "dir"
             ) {
-
-                /*
-                   Bouton ouvrir.
-                */
 
                 const openButton =
                     document.createElement(
@@ -2925,7 +3214,7 @@ function renderFiles(
 
 
                 openButton.onclick =
-                    function(event) {
+                    event => {
 
                         event.stopPropagation();
 
@@ -2940,10 +3229,6 @@ function renderFiles(
                     openButton
                 );
 
-
-                /*
-                   Bouton copier.
-                */
 
                 const copyButton =
                     document.createElement(
@@ -2964,7 +3249,7 @@ function renderFiles(
 
 
                 copyButton.onclick =
-                    async function(event) {
+                    async event => {
 
                         event.stopPropagation();
 
@@ -3029,12 +3314,8 @@ function renderFiles(
             );
 
 
-            /*
-               CLIC PRINCIPAL
-            */
-
             item.onclick =
-                function() {
+                () => {
 
                     if (
                         file.type === "dir"
@@ -3068,7 +3349,7 @@ function renderFiles(
 
 
 /* =========================================================
-   OUVRIR FICHIER
+   OUVRIR
 ========================================================= */
 
 function openFile(
@@ -3088,11 +3369,6 @@ function openFile(
     }
 
 
-    /*
-       Image / audio / vidéo :
-       visionneuse interne.
-    */
-
     if (
         isMediaFile(file)
     ) {
@@ -3105,11 +3381,6 @@ function openFile(
 
     }
 
-
-    /*
-       Autres fichiers :
-       ouverture classique dans le navigateur.
-    */
 
     window.open(
         getPagesUrl(
@@ -3186,8 +3457,10 @@ function renderBreadcrumb() {
                         globalSearchMode =
                             false;
 
+
                         searchInput.value =
                             "";
+
 
                         loadDirectory(
                             path
@@ -3213,7 +3486,8 @@ function renderBreadcrumb() {
 ========================================================= */
 
 async function loadDirectory(
-    path = ROOT_PATH
+    path = ROOT_PATH,
+    forceRefresh = false
 ) {
 
     path =
@@ -3242,48 +3516,128 @@ async function loadDirectory(
         "block";
 
 
-    status.textContent =
-        "Chargement des fichiers...";
-
-
     renderBreadcrumb();
+
+
+    /*
+       CACHE LOCAL
+    */
+
+    if (!forceRefresh) {
+
+        const cached =
+            getCachedDirectory(
+                path
+            );
+
+
+        if (cached) {
+
+            currentFiles =
+                cached
+                    .filter(
+                        file =>
+                            !isHiddenFile(
+                                file
+                            )
+                    )
+                    .sort(
+                        sortFiles
+                    );
+
+
+            status.style.display =
+                "none";
+
+
+            renderFiles();
+
+
+            document.title =
+                path
+                    .split("/")
+                    .pop() +
+                " - RPG Core";
+
+
+            updateUrl(
+                false
+            );
+
+
+            return;
+
+        }
+
+    }
+
+
+    status.textContent =
+        "☁️ Chargement depuis GitHub...";
 
 
     try {
 
         const response =
             await fetch(
-                getApiUrl(
-                    path
-                )
+                getApiUrl(path),
+                {
+                    cache:
+                        "no-store"
+                }
             );
+
+
+        /*
+           Vérification de la limite API.
+        */
+
+        if (
+            response.status === 403 ||
+            response.status === 429
+        ) {
+
+            let remaining =
+                response.headers.get(
+                    "X-RateLimit-Remaining"
+                );
+
+
+            if (
+                remaining === "0"
+            ) {
+
+                throw new Error(
+                    "Limite de l'API GitHub atteinte. " +
+                    "Les dossiers déjà visités restent disponibles grâce au cache local."
+                );
+
+            }
+
+
+            throw new Error(
+                "GitHub refuse actuellement la requête (HTTP " +
+                response.status +
+                ")."
+            );
+
+        }
+
+
+        if (
+            response.status === 404
+        ) {
+
+            throw new Error(
+                "Dossier introuvable."
+            );
+
+        }
 
 
         if (
             !response.ok
         ) {
-
-            if (
-                response.status === 404
-            ) {
-
-                throw new Error(
-                    "Dossier introuvable."
-                );
-
-            }
-
-
-            if (
-                response.status === 403
-            ) {
-
-                throw new Error(
-                    "Limite de l'API GitHub atteinte."
-                );
-
-            }
-
 
             throw new Error(
                 "Erreur HTTP " +
@@ -3296,11 +3650,6 @@ async function loadDirectory(
         const data =
             await response.json();
 
-
-        /*
-           Si GitHub retourne un fichier
-           au lieu d'un dossier.
-        */
 
         if (
             !Array.isArray(data)
@@ -3328,6 +3677,16 @@ async function loadDirectory(
                 );
 
 
+        /*
+           SAUVEGARDE CACHE
+        */
+
+        setCachedDirectory(
+            path,
+            currentFiles
+        );
+
+
         status.style.display =
             "none";
 
@@ -3336,14 +3695,15 @@ async function loadDirectory(
 
 
         document.title =
-            currentPath
+            path
                 .split("/")
                 .pop() +
             " - RPG Core";
 
 
-        updateUrl();
-
+        updateUrl(
+            true
+        );
 
     }
 
@@ -3369,24 +3729,18 @@ async function loadDirectory(
 
                 <br><br>
 
-                Utilisateur :
-                ${escapeHtml(
-                    GITHUB_USER
-                )}
-
-                <br>
-
-                Dépôt :
-                ${escapeHtml(
-                    GITHUB_REPO
-                )}
-
-                <br>
-
-                Branche :
-                ${escapeHtml(
-                    GITHUB_BRANCH
-                )}
+                ${
+                    error.message.includes(
+                        "Limite"
+                    )
+                        ? `
+                            <br>
+                            💾 Les dossiers déjà visités
+                            restent disponibles depuis
+                            le cache local.
+                        `
+                        : ""
+                }
 
             </div>
 
@@ -3426,9 +3780,16 @@ function sortFiles(
     }
 
 
-    return a.name.localeCompare(
-        b.name,
+    return String(
+        a.name || ""
+    ).localeCompare(
+
+        String(
+            b.name || ""
+        ),
+
         undefined,
+
         {
             numeric:
                 true,
@@ -3436,13 +3797,14 @@ function sortFiles(
             sensitivity:
                 "base"
         }
+
     );
 
 }
 
 
 /* =========================================================
-   ESCAPE HTML
+   ESCAPE
 ========================================================= */
 
 function escapeHtml(
@@ -3477,33 +3839,80 @@ function escapeHtml(
 
 
 /* =========================================================
-   ARBRE COMPLET GITHUB
+   ARBRE GITHUB
 ========================================================= */
 
-/*
-   Cette fonction récupère tout l'arbre
-   de RPG Core en une seule requête.
+async function loadAllFiles(
+    forceRefresh = false
+) {
 
-   Elle sert uniquement à la recherche globale.
-*/
+    /*
+       Première tentative :
+       CACHE.
+    */
 
-async function loadAllFiles() {
+    if (!forceRefresh) {
+
+        const cached =
+            getCachedTree();
+
+
+        if (cached) {
+
+            allFiles =
+                cached
+                    .filter(
+                        file =>
+                            !isHiddenFile(
+                                file
+                            )
+                    )
+                    .sort(
+                        sortFiles
+                    );
+
+
+            return allFiles;
+
+        }
+
+    }
+
 
     try {
 
         const url =
-            `https://api.github.com/repos/` +
-            `${GITHUB_USER}/` +
-            `${GITHUB_REPO}/git/trees/` +
-            `${encodeURIComponent(
+            "https://api.github.com/repos/" +
+            GITHUB_USER +
+            "/" +
+            GITHUB_REPO +
+            "/git/trees/" +
+            encodeURIComponent(
                 GITHUB_BRANCH
-            )}?recursive=1`;
+            ) +
+            "?recursive=1";
 
 
         const response =
             await fetch(
-                url
+                url,
+                {
+                    cache:
+                        "no-store"
+                }
             );
+
+
+        if (
+            response.status === 403 ||
+            response.status === 429
+        ) {
+
+            throw new Error(
+                "Limite de l'API GitHub atteinte."
+            );
+
+        }
 
 
         if (
@@ -3511,7 +3920,7 @@ async function loadAllFiles() {
         ) {
 
             throw new Error(
-                "Impossible de récupérer l'arborescence complète."
+                "Impossible de récupérer l'arborescence."
             );
 
         }
@@ -3519,6 +3928,21 @@ async function loadAllFiles() {
 
         const data =
             await response.json();
+
+
+        /*
+           GitHub peut tronquer un arbre énorme.
+        */
+
+        if (
+            data.truncated
+        ) {
+
+            console.warn(
+                "⚠️ GitHub a tronqué l'arborescence."
+            );
+
+        }
 
 
         if (
@@ -3545,11 +3969,6 @@ async function loadAllFiles() {
                             );
 
 
-                        /*
-                           On ne garde que
-                           mnt/data/RPG_core.
-                        */
-
                         return (
                             path === ROOT_PATH ||
                             path.startsWith(
@@ -3571,15 +3990,12 @@ async function loadAllFiles() {
                 .map(
                     item => {
 
-                        const name =
-                            item.path
-                                .split("/")
-                                .pop();
-
-
                         return {
 
-                            name,
+                            name:
+                                item.path
+                                    .split("/")
+                                    .pop(),
 
                             path:
                                 item.path,
@@ -3590,7 +4006,8 @@ async function loadAllFiles() {
                                     : "file",
 
                             size:
-                                item.size ?? null
+                                item.size ??
+                                null
 
                         };
 
@@ -3599,6 +4016,15 @@ async function loadAllFiles() {
                 .sort(
                     sortFiles
                 );
+
+
+        /*
+           CACHE.
+        */
+
+        setCachedTree(
+            allFiles
+        );
 
 
         return allFiles;
@@ -3628,10 +4054,6 @@ async function loadAllFiles() {
    RECHERCHE GLOBALE
 ========================================================= */
 
-let globalSearchTimer =
-    null;
-
-
 async function performGlobalSearch(
     query
 ) {
@@ -3642,14 +4064,17 @@ async function performGlobalSearch(
             .toLowerCase();
 
 
-    if (
-        !cleanQuery
-    ) {
+    if (!cleanQuery) {
 
         globalSearchMode =
             false;
 
+
+        renderBreadcrumb();
+
+
         renderFiles();
+
 
         return;
 
@@ -3665,40 +4090,65 @@ async function performGlobalSearch(
 
 
     status.textContent =
-        "🔎 Recherche dans tout RPG Core...";
+        "🔎 Recherche dans RPG Core...";
 
 
     fileList.innerHTML =
         "";
 
 
-    /*
-       Si l'arbre n'est pas encore chargé,
-       on le récupère.
-    */
+    const tree =
+        await loadAllFiles();
+
 
     if (
-        allFiles.length === 0
+        tree.length === 0
     ) {
 
-        await loadAllFiles();
+        status.style.display =
+            "none";
+
+
+        fileList.innerHTML = `
+
+            <div class="error">
+
+                Impossible d'effectuer
+                la recherche globale.
+
+                <br><br>
+
+                Vérifie la connexion
+                à GitHub ou actualise
+                la page plus tard.
+
+            </div>
+
+        `;
+
+
+        return;
 
     }
 
 
     const results =
-        allFiles.filter(
+        tree.filter(
             file => {
 
                 const name =
                     String(
                         file.name || ""
-                    ).toLowerCase();
+                    )
+                    .toLowerCase();
+
 
                 const path =
                     String(
                         file.path || ""
-                    ).toLowerCase();
+                    )
+                    .toLowerCase();
+
 
                 return (
                     name.includes(
@@ -3722,11 +4172,6 @@ async function performGlobalSearch(
     );
 
 
-    /*
-       On remplace le breadcrumb
-       par une indication claire.
-    */
-
     breadcrumb.innerHTML = `
 
         <button
@@ -3746,12 +4191,14 @@ async function performGlobalSearch(
                 color:var(--muted);
             "
         >
+
             🔎 ${results.length}
             résultat${
                 results.length > 1
                     ? "s"
                     : ""
             }
+
         </span>
 
     `;
@@ -3771,10 +4218,13 @@ async function performGlobalSearch(
                 globalSearchMode =
                     false;
 
+
                 searchInput.value =
                     "";
 
+
                 renderBreadcrumb();
+
 
                 renderFiles();
 
@@ -3786,10 +4236,12 @@ async function performGlobalSearch(
 
 
 /* =========================================================
-   URL / HISTORIQUE
+   URL
 ========================================================= */
 
-function updateUrl() {
+function updateUrl(
+    push = true
+) {
 
     const url =
         new URL(
@@ -3803,14 +4255,31 @@ function updateUrl() {
     );
 
 
-    history.pushState(
-        {
-            path:
-                currentPath
-        },
-        "",
-        url
-    );
+    if (push) {
+
+        history.pushState(
+            {
+                path:
+                    currentPath
+            },
+            "",
+            url
+        );
+
+    }
+
+    else {
+
+        history.replaceState(
+            {
+                path:
+                    currentPath
+            },
+            "",
+            url
+        );
+
+    }
 
 }
 
@@ -3830,8 +4299,10 @@ document
             globalSearchMode =
                 false;
 
+
             searchInput.value =
                 "";
+
 
             loadDirectory(
                 ROOT_PATH
@@ -3901,12 +4372,32 @@ document
         "click",
         async () => {
 
-            allFiles =
-                [];
+            /*
+               Actualisation volontaire :
+               on efface uniquement le cache
+               du dossier actuel.
+
+               L'arbre global reste en cache
+               pour éviter une grosse requête inutile.
+            */
+
+            const cache =
+                getDirectoryCache();
+
+
+            delete cache[
+                currentPath
+            ];
+
+
+            saveDirectoryCache(
+                cache
+            );
 
 
             await loadDirectory(
-                currentPath
+                currentPath,
+                true
             );
 
         }
@@ -3927,35 +4418,25 @@ searchInput.addEventListener(
 
 
         const query =
-            searchInput.value
-                .trim();
+            searchInput.value.trim();
 
 
-        /*
-           Recherche vide :
-           retour au dossier courant.
-        */
-
-        if (
-            !query
-        ) {
+        if (!query) {
 
             globalSearchMode =
                 false;
 
+
             renderBreadcrumb();
 
+
             renderFiles();
+
 
             return;
 
         }
 
-
-        /*
-           Petit délai pour éviter
-           une requête à chaque frappe.
-        */
 
         globalSearchTimer =
             setTimeout(
@@ -3966,7 +4447,7 @@ searchInput.addEventListener(
                     );
 
                 },
-                250
+                400
             );
 
     }
@@ -3974,14 +4455,8 @@ searchInput.addEventListener(
 
 
 /* =========================================================
-   PARAMÈTRES
+   SETTINGS
 ========================================================= */
-
-const settingsPanel =
-    document.getElementById(
-        "settingsPanel"
-    );
-
 
 document
     .getElementById(
@@ -3993,7 +4468,9 @@ document
 
             settingsPanel
                 .classList
-                .add("open");
+                .add(
+                    "open"
+                );
 
 
             settingsPanel
@@ -4040,7 +4517,9 @@ function closeSettings() {
 
     settingsPanel
         .classList
-        .remove("open");
+        .remove(
+            "open"
+        );
 
 
     settingsPanel
@@ -4053,7 +4532,7 @@ function closeSettings() {
 
 
 /* =========================================================
-   MODE AFFICHAGE
+   MODE
 ========================================================= */
 
 document
@@ -4159,7 +4638,7 @@ document
 
 
 /* =========================================================
-   RESET
+   RESET AFFICHAGE
 ========================================================= */
 
 document
@@ -4187,7 +4666,7 @@ document
 
 
 /* =========================================================
-   VISIONNEUSE : FERMER
+   VISIONNEUSE
 ========================================================= */
 
 document
@@ -4199,10 +4678,6 @@ document
         closeMediaViewer
     );
 
-
-/* =========================================================
-   VISIONNEUSE : NAVIGATEUR
-========================================================= */
 
 viewerOpenBrowser
     .addEventListener(
@@ -4224,10 +4699,6 @@ viewerOpenBrowser
     );
 
 
-/* =========================================================
-   VISIONNEUSE : CLIC FOND
-========================================================= */
-
 mediaViewer.addEventListener(
     "click",
     event => {
@@ -4246,7 +4717,7 @@ mediaViewer.addEventListener(
 
 
 /* =========================================================
-   VISIONNEUSE : TOUCHE ÉCHAP
+   ESC
 ========================================================= */
 
 document.addEventListener(
@@ -4254,32 +4725,35 @@ document.addEventListener(
     event => {
 
         if (
-            event.key ===
+            event.key !==
             "Escape"
         ) {
 
-            if (
-                mediaViewer.classList.contains(
-                    "open"
-                )
-            ) {
+            return;
 
-                closeMediaViewer();
-
-                return;
-
-            }
+        }
 
 
-            if (
-                settingsPanel.classList.contains(
-                    "open"
-                )
-            ) {
+        if (
+            mediaViewer.classList.contains(
+                "open"
+            )
+        ) {
 
-                closeSettings();
+            closeMediaViewer();
 
-            }
+            return;
+
+        }
+
+
+        if (
+            settingsPanel.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeSettings();
 
         }
 
@@ -4288,7 +4762,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   HISTORIQUE NAVIGATEUR
+   HISTORIQUE
 ========================================================= */
 
 window.addEventListener(
@@ -4302,7 +4776,9 @@ window.addEventListener(
 
 
         const path =
-            params.get("path") ||
+            params.get(
+                "path"
+            ) ||
             ROOT_PATH;
 
 
@@ -4315,11 +4791,14 @@ window.addEventListener(
             globalSearchMode =
                 false;
 
+
             searchInput.value =
                 "";
 
+
             loadDirectory(
-                path
+                path,
+                false
             );
 
         }
@@ -4356,26 +4835,17 @@ const initialPath =
         : ROOT_PATH;
 
 
-loadDirectory(
-    initialPath
-);
-
-
 /*
-   On prépare l'arbre global
-   en arrière-plan.
+   IMPORTANT :
 
-   Cela permet que la première recherche
-   soit beaucoup plus rapide.
+   Aucun appel API global ici.
+
+   On charge uniquement le dossier
+   nécessaire au démarrage.
 */
 
-setTimeout(
-    () => {
-
-        loadAllFiles();
-
-    },
-    500
+loadDirectory(
+    initialPath
 );
 
 </script>
