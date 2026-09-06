@@ -122,7 +122,8 @@
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Ice3.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Ice4.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Ice5.json",
-  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Laser.json",
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Laser1.json",
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Laser2.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Light1.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Light2.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Light3.json",
@@ -174,5 +175,5 @@
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind3.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind4.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind5.json",
-  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/data/data.json"
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Data/Data.json"
   ]
