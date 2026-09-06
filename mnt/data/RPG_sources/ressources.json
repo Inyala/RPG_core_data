@@ -5,6 +5,7 @@
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/audio/SE.json",
 
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/system/Balloon.json",
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/system/States.json",
 
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/tilesets/Dungeon_A1.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/tilesets/Dungeon_A2.json",
@@ -172,5 +173,6 @@
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind2.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind3.json",
   "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind4.json",
-  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind5.json"
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/Wind5.json",
+  "https://inyala.github.io/RPG_core_data/mnt/data/RPG_sources/Img/Game/animations/data/data.json"
   ]
