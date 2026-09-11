@@ -1,0 +1,360 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<title>Licence — RPG Core</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #10141c;
+        color: #e8edf5;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .page {
+        width: 100%;
+        max-width: 520px;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .header {
+        text-align: center;
+        padding: 10px 5px 12px;
+        border-bottom: 1px solid #303847;
+        margin-bottom: 10px;
+    }
+
+    .title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ffffff;
+        margin: 0;
+    }
+
+    .version {
+        margin-top: 4px;
+        color: #8fcfff;
+        font-size: 12px;
+    }
+
+    .card {
+        background: #181e29;
+        border: 1px solid #303847;
+        border-radius: 8px;
+        padding: 9px;
+        margin-bottom: 8px;
+    }
+
+    .label {
+        color: #8995a8;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        margin-bottom: 2px;
+    }
+
+    .value {
+        color: #ffffff;
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .section-title {
+        color: #8fcfff;
+        font-weight: bold;
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    .text {
+        color: #cbd3df;
+        line-height: 1.4;
+        white-space: pre-line;
+    }
+
+    .status {
+        text-align: center;
+        padding: 20px 5px;
+        color: #9aa5b5;
+    }
+
+    .error {
+        color: #ff8d8d;
+    }
+
+    .footer {
+        text-align: center;
+        color: #687487;
+        font-size: 10px;
+        padding: 5px 0 12px;
+    }
+
+    @media (max-width: 240px) {
+        html, body {
+            font-size: 11px;
+        }
+
+        .page {
+            padding: 6px;
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .card {
+            padding: 7px;
+            border-radius: 6px;
+        }
+
+        .value {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div id="loading" class="status">
+        Chargement de la licence…
+    </div>
+
+    <div id="content" style="display:none;">
+
+        <div class="header">
+            <div id="appName" class="title">RPG Core</div>
+            <div id="appVersion" class="version"></div>
+        </div>
+
+        <div class="card">
+            <div class="label">Développeur</div>
+            <div id="developer" class="value"></div>
+        </div>
+
+        <div class="card">
+            <div class="label">Type</div>
+            <div id="programType" class="value"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Licence</div>
+
+            <div class="label">Type de licence</div>
+            <div id="licenseType" class="value"></div>
+
+            <br>
+
+            <div class="label">Copyright</div>
+            <div id="copyright" class="value"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">À propos</div>
+            <div id="description" class="text"></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Ressources</div>
+
+            <div class="text">
+                <strong>Ressources internes</strong><br>
+                <span id="internal"></span>
+
+                <br><br>
+
+                <strong>Ressources personnelles</strong><br>
+                <span id="external"></span>
+
+                <br><br>
+
+                <strong>Serveur de l'utilisateur</strong><br>
+                <span id="userServer"></span>
+
+                <br><br>
+
+                <strong>Serveur RPG Core</strong><br>
+                <span id="rpgCoreServer"></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Technologie</div>
+            <div id="technology" class="value"></div>
+        </div>
+
+        <div class="footer">
+            RPG Core · Licence
+        </div>
+
+    </div>
+
+    <div id="error" class="status error" style="display:none;">
+        Impossible de charger les informations de licence.
+    </div>
+
+</div>
+
+<script>
+"use strict";
+
+/*
+ * Fichier XML attendu :
+ *
+ * rpg-core-license.xml
+ *
+ * Il doit être placé dans le même dossier que cette page HTML.
+ */
+
+const XML_FILE = "rpg-core-license.xml";
+
+
+function text(xml, selector, fallback = "Non renseigné") {
+    const element = xml.querySelector(selector);
+
+    if (!element) {
+        return fallback;
+    }
+
+    const value = element.textContent.trim();
+
+    return value || fallback;
+}
+
+
+async function loadLicense() {
+
+    const loading = document.getElementById("loading");
+    const content = document.getElementById("content");
+    const error = document.getElementById("error");
+
+    try {
+
+        const response = await fetch(XML_FILE, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("XML inaccessible");
+        }
+
+        const xmlText = await response.text();
+
+        const parser = new DOMParser();
+
+        const xml = parser.parseFromString(
+            xmlText,
+            "application/xml"
+        );
+
+        if (xml.querySelector("parsererror")) {
+            throw new Error("XML invalide");
+        }
+
+
+        /*
+         * PROGRAMME
+         */
+
+        document.getElementById("appName").textContent =
+            text(xml, "program > name", "RPG Core");
+
+        document.getElementById("appVersion").textContent =
+            "Version " +
+            text(xml, "program > version", "?") +
+            (
+                text(xml, "program > versionName", "") !== ""
+                ? " · " + text(xml, "program > versionName", "")
+                : ""
+            );
+
+        document.getElementById("developer").textContent =
+            text(xml, "program > developer");
+
+        document.getElementById("programType").textContent =
+            text(xml, "program > type");
+
+
+        /*
+         * LICENCE
+         */
+
+        document.getElementById("licenseType").textContent =
+            text(xml, "license > type");
+
+        document.getElementById("copyright").textContent =
+            text(xml, "license > copyright");
+
+        document.getElementById("description").textContent =
+            text(xml, "license > description");
+
+
+        /*
+         * RESSOURCES
+         */
+
+        document.getElementById("internal").textContent =
+            text(xml, "resources > internal");
+
+        document.getElementById("external").textContent =
+            text(xml, "resources > external");
+
+        document.getElementById("userServer").textContent =
+            text(xml, "resources > userServer");
+
+        document.getElementById("rpgCoreServer").textContent =
+            text(xml, "resources > rpgCoreServer");
+
+
+        /*
+         * TECHNOLOGIE
+         */
+
+        document.getElementById("technology").textContent =
+            text(xml, "credits > technology");
+
+
+        /*
+         * AFFICHAGE
+         */
+
+        loading.style.display = "none";
+        content.style.display = "block";
+
+    } catch (e) {
+
+        console.error(e);
+
+        loading.style.display = "none";
+        error.style.display = "block";
+    }
+}
+
+
+loadLicense();
+</script>
+
+</body>
+</html>
