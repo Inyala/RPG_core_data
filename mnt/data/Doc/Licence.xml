@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rpgcore>
+
+    <program>
+        <name>RPG Core</name>
+        <version>1.1.3</version>
+        <developer>INYALA</developer>
+        <type>Open Source RPG Creation Tool</type>
+    </program>
+
+    <license>
+        <copyright>© 2026 INYALA</copyright>
+        <type>Open Source</type>
+
+        <description>
+            RPG Core est un programme basé sur TurboWarp
+            permettant de simplifier la création de jeux RPG.
+        </description>
+    </license>
+
+    <resources>
+
+        <internal>
+            RPG Core peut fournir ses propres ressources
+            internes pour permettre la création de projets RPG.
+        </internal>
+
+        <external>
+            Les utilisateurs peuvent utiliser leurs propres
+            ressources et dépendances externes.
+        </external>
+
+        <userServer>
+            Les ressources personnelles et leurs dépendances
+            doivent être hébergées sur le serveur de l'utilisateur
+            ou sur un service qu'il contrôle.
+        </userServer>
+
+        <rpgCoreServer>
+            Le serveur officiel de RPG Core peut fournir
+            des ressources et dépendances officielles
+            destinées à être utilisées avec RPG Core.
+        </rpgCoreServer>
+
+    </resources>
+
+    <credits>
+        <developer>INYALA</developer>
+        <program>RPG Core</program>
+        <technology>TurboWarp</technology>
+    </credits>
+
+</rpgcore>
