@@ -34,11 +34,9 @@ Image non contractuel
       alt="Image de l'actualité"
     />
     <video
-      src="https://inyala.github.io/RPG_core_data/actu/img/actu5.mp4"
-      width="400"
-      height="400"
-      alt="Vidéo de l'actualité"
-    />
+        src="https://inyala.github.io/RPG_core_data/actu/img/actu5.mp4"
+        controls="true"
+      />
   </actu>
 
   <actu id="bienvenue">
@@ -74,11 +72,9 @@ Image non contractuel
       alt="Image de l'actualité"
     />
     <video
-      src="https://inyala.github.io/RPG_core_data/actu/img/actu5.mp4"
-      width="400"
-      height="400"
-      alt="Vidéo de l'actualité"
-    />
+        src="https://inyala.github.io/RPG_core_data/actu/img/actu5.mp4"
+        controls="true"
+      />
   </actu>
 
 </actus>
