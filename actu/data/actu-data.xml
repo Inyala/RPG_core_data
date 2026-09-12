@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <actus>
-  <actu id="Bienvenue" id="bienvenue">
+  <actu id="Bienvenue">
     <title>Bienvenue sur RPG core</title>
     <text>
 RPG core version🍦glace.1.1.4
@@ -40,4 +40,45 @@ Image non contractuel
       alt="Vidéo de l'actualité"
     />
   </actu>
+
+  <actu id="bienvenue">
+    <title>Bienvenue sur RPG core</title>
+    <text>
+RPG core version🍦glace.1.1.4
+    </text>
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu1.jpg"
+      width="400"
+      height="400"
+      alt="Image de l'actualité"
+    />
+    <text>
+Image non contractuel
+    </text>
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu2.jpg"
+      width="400"
+      height="400"
+      alt="Image de l'actualité"
+    />
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu3.jpg"
+      width="400"
+      height="400"
+      alt="Image de l'actualité"
+    />
+    <image
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu4.jpg"
+      width="400"
+      height="400"
+      alt="Image de l'actualité"
+    />
+    <video
+      src="https://inyala.github.io/RPG_core_data/actu/img/actu5.mp4"
+      width="400"
+      height="400"
+      alt="Vidéo de l'actualité"
+    />
+  </actu>
+
 </actus>
