@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <actus>
-  <actu id="Bienvenue">
+  <actu id="Bienvenue" id="bienvenue">
     <title>Bienvenue sur RPG core</title>
     <text>
 RPG core version🍦glace.1.1.4
